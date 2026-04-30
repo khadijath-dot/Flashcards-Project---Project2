@@ -6,19 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>651</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel{
+	qproperty-alignment: AlignCenter;
+	padding: 10px;
+	background-color: #f0f0f0;
+	border: 2px solid;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="input_term">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>120</y>
+      <x>10</x>
+      <y>190</y>
       <width>113</width>
       <height>21</height>
      </rect>
@@ -27,8 +35,8 @@
    <widget class="QLineEdit" name="input_definition">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>180</y>
+      <x>10</x>
+      <y>280</y>
       <width>113</width>
       <height>21</height>
      </rect>
@@ -37,8 +45,8 @@
    <widget class="QPushButton" name="button_add">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>270</y>
+      <x>20</x>
+      <y>340</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -50,40 +58,141 @@
    <widget class="QLabel" name="label_display">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>90</y>
-      <width>101</width>
-      <height>81</height>
+      <x>80</x>
+      <y>10</y>
+      <width>261</width>
+      <height>111</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: #000000;
+}</string>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="button_flip">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>230</y>
+      <x>280</x>
+      <y>220</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Flip</string>
     </property>
    </widget>
    <widget class="QPushButton" name="button_next">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>280</y>
+      <x>240</x>
+      <y>250</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Next</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="card_list_widget">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>0</y>
+      <width>231</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_study">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>220</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_term">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>100</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	border: 0 px;	
+	color: #ffffff;
+	background-color: #1E1E1E;
+}</string>
+    </property>
+    <property name="text">
+     <string>Term</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_definition">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>240</y>
+      <width>100</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	border: 0 px;
+	color: #ffffff;
+	background-color: #1E1E1E;
+}</string>
+    </property>
+    <property name="text">
+     <string>Definition</string>
     </property>
    </widget>
   </widget>
@@ -92,7 +201,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>651</width>
      <height>22</height>
     </rect>
    </property>

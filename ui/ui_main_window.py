@@ -12,30 +12,75 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(651, 420)
+        MainWindow.setStyleSheet("QLabel{\n"
+"    qproperty-alignment: AlignCenter;\n"
+"    padding: 10px;\n"
+"    background-color: #f0f0f0;\n"
+"    border: 2px solid;\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.input_term = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.input_term.setGeometry(QtCore.QRect(60, 120, 113, 21))
+        self.input_term.setGeometry(QtCore.QRect(10, 190, 113, 21))
         self.input_term.setObjectName("input_term")
         self.input_definition = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.input_definition.setGeometry(QtCore.QRect(60, 180, 113, 21))
+        self.input_definition.setGeometry(QtCore.QRect(10, 280, 113, 21))
         self.input_definition.setObjectName("input_definition")
         self.button_add = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.button_add.setGeometry(QtCore.QRect(50, 270, 101, 31))
+        self.button_add.setGeometry(QtCore.QRect(20, 340, 101, 31))
         self.button_add.setObjectName("button_add")
         self.label_display = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_display.setGeometry(QtCore.QRect(500, 90, 101, 81))
+        self.label_display.setGeometry(QtCore.QRect(80, 10, 261, 111))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_display.setFont(font)
+        self.label_display.setStyleSheet("QLabel{\n"
+"    color: #000000;\n"
+"}")
+        self.label_display.setLineWidth(1)
+        self.label_display.setText("")
+        self.label_display.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_display.setObjectName("label_display")
         self.button_flip = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.button_flip.setGeometry(QtCore.QRect(510, 230, 75, 24))
+        self.button_flip.setGeometry(QtCore.QRect(280, 220, 75, 24))
         self.button_flip.setObjectName("button_flip")
         self.button_next = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.button_next.setGeometry(QtCore.QRect(510, 280, 75, 24))
+        self.button_next.setGeometry(QtCore.QRect(240, 250, 75, 24))
         self.button_next.setObjectName("button_next")
+        self.card_list_widget = QtWidgets.QListWidget(parent=self.centralwidget)
+        self.card_list_widget.setGeometry(QtCore.QRect(420, 0, 231, 371))
+        self.card_list_widget.setObjectName("card_list_widget")
+        self.button_study = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.button_study.setGeometry(QtCore.QRect(190, 220, 75, 24))
+        self.button_study.setObjectName("button_study")
+        self.label_term = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_term.setGeometry(QtCore.QRect(20, 150, 100, 41))
+        self.label_term.setMinimumSize(QtCore.QSize(100, 30))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_term.setFont(font)
+        self.label_term.setStyleSheet("QLabel{\n"
+"    border: 0 px;    \n"
+"    color: #ffffff;\n"
+"    background-color: #1E1E1E;\n"
+"}")
+        self.label_term.setObjectName("label_term")
+        self.label_definition = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_definition.setGeometry(QtCore.QRect(20, 240, 100, 41))
+        self.label_definition.setMinimumSize(QtCore.QSize(100, 30))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_definition.setFont(font)
+        self.label_definition.setStyleSheet("QLabel{\n"
+"    border: 0 px;\n"
+"    color: #ffffff;\n"
+"    background-color: #1E1E1E;\n"
+"}")
+        self.label_definition.setObjectName("label_definition")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 651, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
@@ -49,9 +94,11 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.button_add.setText(_translate("MainWindow", "Add Card"))
-        self.label_display.setText(_translate("MainWindow", "TextLabel"))
-        self.button_flip.setText(_translate("MainWindow", "PushButton"))
-        self.button_next.setText(_translate("MainWindow", "PushButton"))
+        self.button_flip.setText(_translate("MainWindow", "Flip"))
+        self.button_next.setText(_translate("MainWindow", "Next"))
+        self.button_study.setText(_translate("MainWindow", "Start"))
+        self.label_term.setText(_translate("MainWindow", "Term"))
+        self.label_definition.setText(_translate("MainWindow", "Definition"))
 
 
 if __name__ == "__main__":
