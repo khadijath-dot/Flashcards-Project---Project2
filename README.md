@@ -1,2 +1,2 @@
 # Flashcards-Project---Project2
-Helps students study using flashcards
+A flash card tool to help students study
