@@ -17,6 +17,17 @@ class FlashcardLogic:
     def next_card(self) -> None:
         if self.cards:
             self.current_index = (self.current_index + 1) % len(self.cards)
+
+  
+    def flip_card(self):
+        card = self.logic.get_current_card()
+        if not card:
+            return
+        if self.label_display.text() == card['term']:
+            self.label_display.setText(card['definition'])
+        else:
+            self.label_display.setText(card['term'])
+
     
     def get_all_cards(self):
         return self.cards

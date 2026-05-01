@@ -16,6 +16,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.label_term.setText('Term')
         self.statusBar().showMessage("Ready")
 
+
     def add_card(self):
         term = self.input_term.text()
         definition = self.input_definition.text()
@@ -25,6 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.statusBar().showMessage("Card added successfully", 2000)
             self.update_list_view()
 
+
     def start_study(self):
         card = self.logic.get_current_card()
         if card:
@@ -33,25 +35,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.statusBar().showMessage("Please add a card first.")
 
+
     def show_next_card(self):
         card = self.logic.get_current_card()
         if card:
             self.label_display.setText(card['term'])
             self.logic.next_card()
 
-    def flip_card(self):
-        card = self.logic.get_current_card()
-        if not card:
-            return
-        if self.label_display.text() == card['term']:
-            self.label_display.setText(card['definition'])
-        else:
-            self.label_display.setText(card['term'])
 
     def update_list_view(self):
         self.card_list_widget.clear()
         all_cards = self.logic.get_all_cards()
-        for card in all_cards:
+        sorted_cards = sorted(all_cards, key = lambda x: x['term'].lower())
+        for card in sorted_cards:
             display_text = f"{card['term']} : {card['definition']}"
             self.card_list_widget.addItem(display_text)
         
