@@ -43,6 +43,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.logic.next_card()
 
 
+    def flip_card(self):
+        current_text = self.label_display.text()
+        new_text = self.logic.get_flipped_text(current_text)
+        
+        if new_text:
+            self.label_display.setText(new_text)
+
+
     def update_list_view(self):
         self.card_list_widget.clear()
         all_cards = self.logic.get_all_cards()

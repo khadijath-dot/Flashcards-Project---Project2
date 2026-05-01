@@ -19,14 +19,14 @@ class FlashcardLogic:
             self.current_index = (self.current_index + 1) % len(self.cards)
 
   
-    def flip_card(self):
-        card = self.logic.get_current_card()
+    def get_flipped_text(self, current_display_text: str) -> str | None:
+        card = self.get_current_card()
         if not card:
-            return
-        if self.label_display.text() == card['term']:
-            self.label_display.setText(card['definition'])
+            return None
+        if current_display_text == card['term']:
+            return card['definition']
         else:
-            self.label_display.setText(card['term'])
+            return card['term']
 
     
     def get_all_cards(self):
