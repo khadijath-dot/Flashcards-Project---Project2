@@ -1,18 +1,43 @@
+import csv
+import os
+
 class FlashcardLogic:
     def __init__(self) -> None:
         self.cards: list[dict[str, str]] = []
         self.current_index: int = 0
+        self.filename = 'flashcards.csv'
+        self.load_cards
 
+
+    def save_cards(self):
+        with open(self.filename, 'w', newline = '') as f:
+            writer = csv.DictWriter(f, fieldnames = ['term', 'definition'])
+            writer.writeheader()
+            writer.writerows(self.cards)
+
+
+    def load_cards(self) -> None:
+        if os.path.exists(self.filename):
+            with open(self.filename, 'r') as f:
+                reader = csv.DictReader(f)
+                self.cards = [row for row in reader]
+
+    
     def add_card(self, term: str, definition: str) -> bool:
-        if term.strip() and definition.strip():
-            self.cards.append({'term': term, 'definition': definition})
+        clean_term = term.strip()
+        clean_def = definition.strip()
+        if clean_term and clean_def:
+            self.cards.append({'term': clean_term, 'definition': clean_def})
+            self.save_cards()
             return True
         return False
+
 
     def get_current_card(self) -> dict[str, str] | None:
         if not self.cards:
             return None
         return self.cards[self.current_index]
+
 
     def next_card(self) -> None:
         if self.cards:

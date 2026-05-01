@@ -1,5 +1,6 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QAbstractItemView
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QApplication, QMainWindow, QAbstractItemView, QListWidgetItem
 from ui.ui_main_window import Ui_MainWindow
 from logic.flashcard_logic import FlashcardLogic
 
@@ -7,14 +8,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.label_display.setWordWrap(True)
+        self.label_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.card_list_widget.setEditTriggers(QAbstractItemView.EditTrigger.DoubleClicked)
-        self.logic = FlashcardLogic()
+        self.card_list_widget.setWordWrap(True)
+        #self.logic = FlashcardLogic()
         self.button_study.clicked.connect(self.start_study)
         self.button_add.clicked.connect(self.add_card)
         self.button_next.clicked.connect(self.show_next_card)
         self.button_flip.clicked.connect(self.flip_card)
         self.label_term.setText('Term')
         self.statusBar().showMessage("Ready")
+        self.logic = FlashcardLogic()
+        self.update_list_view()
 
 
     def add_card(self):
@@ -57,7 +63,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sorted_cards = sorted(all_cards, key = lambda x: x['term'].lower())
         for card in sorted_cards:
             display_text = f"{card['term']} : {card['definition']}"
-            self.card_list_widget.addItem(display_text)
+            item = QListWidgetItem(display_text)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsEditable)
+            self.card_list_widget.addItem(item)
         
 
 if __name__ == "__main__":

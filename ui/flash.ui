@@ -113,9 +113,9 @@
    <widget class="QListWidget" name="card_list_widget">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>400</x>
       <y>0</y>
-      <width>231</width>
+      <width>251</width>
       <height>371</height>
      </rect>
     </property>
@@ -137,7 +137,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>140</y>
       <width>100</width>
       <height>41</height>
      </rect>
@@ -168,7 +168,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>230</y>
       <width>100</width>
       <height>41</height>
      </rect>
