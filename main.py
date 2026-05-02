@@ -65,6 +65,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Starts study sessions by getting the current flashcard from logic
         and showing the term on the main display label
         '''
+        # Sync first
+        #self.sync_logic_with_box()
+        #self.logic.reset_session()
+
         # Ensure we are at the beginning of set
         self.logic.current_index = 0
 
@@ -84,6 +88,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Advances flashcard index in the logic handler and updates the display label
         to show the next term in the set
         '''
+        #self.sync_logic_with_box()
+
         # Tell logic to move index forward
         self.logic.next_card()
 
@@ -125,6 +131,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              
             self.statusBar().showMessage("Session restarted",2000)
 
+    #def sync_logic_with_box(self) -> None:
+     #   '''
+      #  Reads current text in the side box and updates the logic list
+       # '''
+        # Get all text from box
+        #content = self.card_list_widget.toPlainText().strip()
+
+        # Convert text lines into a list of card dictionaries
+        #updated_cards = []
+        #for line in content.split('\n'):
+         #   if ":" in line:
+          #      try:
+           #         term, definition = line.split(":", 1)
+            #        updated_cards.append({
+             #           'term': term.strip(),
+              #          'definition': definition.strip()
+               #     })
+                #except ValueError:
+                 #   continue
+
+        # Update logic class
+       # self.logic.cards = updated_cards
+
+        # Save to csv immediately
+        #self.logic.save_to_csv()
+
+        # Achieved this method with the assistance of Google Gemini
 
     def update_list_view(self) -> None:
         '''
