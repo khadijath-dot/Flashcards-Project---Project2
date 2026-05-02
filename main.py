@@ -4,9 +4,6 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QAbstractItemView, QListW
 from ui.ui_main_window import Ui_MainWindow
 from logic.flashcard_logic import FlashcardLogic
 
-#
-
-
 class MainWindow(QMainWindow, Ui_MainWindow):
     '''
     Main window class for Flashcard application
