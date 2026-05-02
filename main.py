@@ -33,6 +33,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.button_add.clicked.connect(self.add_card)
         self.button_next.clicked.connect(self.show_next_card)
         self.button_flip.clicked.connect(self.flip_card)
+        self.button_restart.clicked.connect(self.restart_study)
         self.label_term.setText('Term')
         
         # Initial UI state setup
@@ -64,6 +65,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Starts study sessions by getting the current flashcard from logic
         and showing the term on the main display label
         '''
+        # Ensure we are at the beginning of set
+        self.logic.current_index = 0
+
         # Request first card from logic handler
         card = self.logic.get_current_card()
         if card:
@@ -71,7 +75,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.label_display.setText(card['term'])
             self.statusBar().showMessage("Study started")
         else:
-            # If the user clicks 
+            # If the user clicks 'Start' with an empty list, a message appears
             self.statusBar().showMessage("Please add a card first.")
 
 
@@ -80,10 +84,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Advances flashcard index in the logic handler and updates the display label
         to show the next term in the set
         '''
+        # Tell logic to move index forward
+        self.logic.next_card()
+
+        # Get and display card at new index
         card = self.logic.get_current_card()
         if card:
+            # Update display to next term
             self.label_display.setText(card['term'])
-            self.logic.next_card()
 
 
     def flip_card(self) -> None:
@@ -91,11 +99,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Toggles display between the current card's term and definition
         by asking for the 'flipped' text from the logic handler
         '''
+        # Get what is currently visible on the display label
         current_text = self.label_display.text()
+
+        # Handles toggle between term and definition
         new_text = self.logic.get_flipped_text(current_text)
         
         if new_text:
             self.label_display.setText(new_text)
+
+
+    def restart_study(self) -> None:
+        '''
+        Resets index and updates display to the first card
+        '''
+        # Tell logic handler to set current index back to 0
+        self.logic.reset_session()
+        
+        # Get card at the reset index so the first card
+        card = self.logic.get_current_card()
+        
+        if card:
+            # Update main display label to show the first term again
+            self.label_display.setText(card['term'])
+             
+            self.statusBar().showMessage("Session restarted",2000)
 
 
     def update_list_view(self) -> None:
