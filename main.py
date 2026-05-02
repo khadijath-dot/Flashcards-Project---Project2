@@ -4,6 +4,9 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QAbstractItemView, QListW
 from ui.ui_main_window import Ui_MainWindow
 from logic.flashcard_logic import FlashcardLogic
 
+#
+
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     '''
     Main window class for Flashcard application
@@ -145,7 +148,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # Let item be edited
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsEditable)
             self.card_list_widget.addItem(item)
-        
+
+        # Lines 141 to 147 was adapted with the help of Google Gemini
+
 
 if __name__ == "__main__":
     # Initialize the application, display the window, and start event loop
